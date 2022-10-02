@@ -1,0 +1,15 @@
+{% extends 'women/base.html' %}
+
+{% block content %}
+<h1>{{ title }}</h1>
+<form method="post">
+    {% csrf_token %}
+    <div class="form-error">{{ form.non_field_errors }}</div>
+
+{% for i in form %}
+<p><label class="form-label" for="{{ i.id_for_label }}">{{i.label}}:</label>{{ i }}</p>
+    <div class="form-error">{{ i.errors }}</div>
+{% endfor %}
+    <button type="submit">Send</button>
+</form>
+{% endblock %}
